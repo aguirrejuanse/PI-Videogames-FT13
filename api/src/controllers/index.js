@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
 const { Op } = require('sequelize');
 const { VIDEOGAMES_URL, BASE_URL } = require('../constants');
-const { Genre, Videogame } = require('../db.js');
+const { Genre, Videogame, Video_Genre } = require('../db.js');
 
 class ModelCrud {
     constructor(model){
@@ -64,7 +64,7 @@ class ModelCrud {
                 include: [{
                     model: Genre,
                     as: 'genre',
-                    attributes: ['id, name']
+                    attributes: ['id' , 'name']
                 }]
             })
             if(game) return res.send(game);
@@ -88,26 +88,32 @@ class ModelCrud {
     }
 
     post = async (req, res, next) => {
-        const {name, description, released, rating, platforms, genre} = req.body;
-        this.model.create({
-            name,
-            description,
-            released,
-            rating,
-            platforms,
-            id: uuidv4(),
-            genre: {
-                name: genre,
-                id: uuidv4()
-            }
-        }, {
-            include: [{
-                model: Genre,
-                as: 'genre'
-            }]
-        })
-        .then((createdGame) => res.send(createdGame))
-        .catch((error) => next(error));
+        try {
+            const {name, description, released, rating, platforms, genre} = req.body;
+            console.log(name, description, released, rating, platforms, genre);
+            let game = await this.model.create({
+                name,
+                description,
+                released,
+                rating,
+                platforms,
+                id: uuidv4(),
+            })
+            genre.forEach( async (g) => {
+                let genero = await Genre.findOne({
+                    where: {
+                        name: g
+                    }
+                });
+                // console.log(game);
+                // console.log(g);
+                // console.log(genero);
+                game.addGenre(genero);
+            });
+            return res.send('Game created');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     getAllGenres = async (req, res, next) => {

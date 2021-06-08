@@ -1,22 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllGenres } from '../store/actions/gameActions';
+import { getAllGenres, createGame } from '../store/actions/gameActions';
 
-const Form = ({ genre, getAllGenres }) => {
+const Form = ({ genre, getAllGenres, createGame, history }) => {
     const [form, setValues] = useState({
         name: '',
         description: '',
         released: '',
-        rating: '',
-        genres: '',
-        platforms: '',
+        rating: 0,
+        genres: [],
+        platforms: [],
     });
 
+    const platforms = ['PC', 'PlayStation 5', 'Xbox One', 'PlayStation 4', 'Xbox Series S/X', 'Nintendo Switch', 'iOS', 'Android', 'Nintendo 3DS', 'Nintendo DS', 'Nintendo DSi', 'macOS'];
+
     const handleInput = event => {
+        if(event.target.name === "genres" || event.target.name === "platforms"){
+            const array = form[event.target.name];
+            setValues({
+                ...form,
+                [event.target.name] : array.concat(event.target.value)
+            })
+        } else {
+            setValues({
+                ...form,
+                [event.target.name]: event.target.value
+            })
+        }
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const game = {
+            name: form.name,
+            description: form.description,
+            released: form.released,
+            rating: form.rating,
+            genre: form.genres,
+            platforms: form.platforms
+        }
+        createGame(game);
         setValues({
-            ...form,
-            [event.target.name]: event.target.value
+            name: '',
+            description: '',
+            released: '',
+            rating: 0,
+            genres: [],
+            platforms: [],
         })
+        alert('Has creado un juego, serás redirigido al Home');
+        history.push('/home');
     }
 
     function getGenre(){
@@ -32,60 +65,83 @@ const Form = ({ genre, getAllGenres }) => {
         <>
             <h1>Soy form</h1>
             <form>
-                <input 
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={form.name}
-                onChange={handleInput} 
-                />
-                <input 
-                type="text"
-                name="description"
-                placeholder="Description"
-                value={form.description}
-                onChange={handleInput} 
-                />
-                <input 
-                type="date"
-                name="released"
-                placeholder="Released"
-                value={form.released}
-                onChange={handleInput} 
-                />
-                <input 
-                type="number"
-                name="rating"
-                placeholder="Rating"
-                value={form.rating}
-                onChange={handleInput} 
-                />
-                {/* <label>
-                    <h3 className="diet">Elige una genero</h3>
-                    <select name="genres" value={form.genres} className="input" onChange={handleInput} >
-                        <option value="Action">Action</option>
-                        <option value="Indie">Indie</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="RPG">RPG</option>
-                        <option value="Strategy">Strategy</option>
-                        <option value="Shooter">Shooter</option>
-                        <option value="Casual">Casual</option>
-                        <option value="Simulation">Simulation</option>
-                        <option value="Puzzle">Puzzle</option>
-                        <option value="Arcade">Arcade</option>
-                        <option value="Platformer">Platformer</option>
-                        <option value="Racing">Racing</option>
-                        <option value="Massively Multiplayer">Massively Multiplayer</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Fighting">Fighting</option>
-                        <option value="Family">Family</option>
-                        <option value="Board Games">Board Games</option>
-                        <option value="Educational">Educational</option>
-                        <option value="Card">Card</option>
-                    </select>
-                </label> */}
-                
-                
+                <div>
+                    
+                    <input 
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={form.name}
+                    onChange={handleInput} 
+                    />
+                    
+                </div>
+                <div>
+                    
+                    <input 
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    value={form.description}
+                    onChange={handleInput} 
+                    />
+                    
+                </div>
+                <div>
+                    
+                    <input 
+                    type="date"
+                    name="released"
+                    placeholder="Released"
+                    value={form.released}
+                    onChange={handleInput} 
+                    />
+                </div>
+                <div>
+                            
+                    <input 
+                    type="number"
+                    name="rating"
+                    placeholder="Rating"
+                    value={form.rating}
+                    onChange={handleInput} 
+                    />
+                    
+                </div>
+                <div>
+                    <label>Elige un genero</label>
+                    {genre?
+                    genre.map((g) => (
+                        <div>
+                            <h4>{g.name}</h4>
+                            <input 
+                            type="checkbox"
+                            name="genres"
+                            value={g.name}
+                            onChange={handleInput}
+                            />
+
+                        </div>
+                    ))
+                    :
+                    <h2>Cargando generos</h2>
+                    }
+                </div>
+                <div>
+                    <label>Elige una plataforma</label>
+                    {platforms.map((p) => (
+                        <div>
+                            <h4>{p}</h4>
+                            <input 
+                            type="checkbox"
+                            name="platforms"
+                            value={p}
+                            onChange={handleInput}
+                            />
+                        </div>
+                    ))}
+                </div>
+                <button onClick={handleSubmit} >Crear</button>
             </form>
         </>
     )
@@ -97,7 +153,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        getAllGenres: genre => { dispatch(getAllGenres(genre)) }
+        getAllGenres: genre => { dispatch(getAllGenres(genre)) },
+        createGame: game => { dispatch(createGame(game)) }
     }
 };
 

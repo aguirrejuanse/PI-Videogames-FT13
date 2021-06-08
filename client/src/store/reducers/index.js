@@ -1,10 +1,11 @@
-import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES } from '../actions/gameActions.js';
+import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL } from '../actions/gameActions.js';
 
 const initialState = {
     allGames: undefined,
     searchGames: undefined,
     idGame: undefined,
-    allGenres: undefined
+    allGenres: undefined,
+    createdGame: undefined,
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,11 +25,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 idGame: action.payload
             }
+        case CLEAR_DETAIL:
+            return {
+                ...state,
+                idGame: undefined
+            }
         case GET_ALL_GENRES:
                 return {
                     ...state,
                     allGenres: action.payload
                 }
+        case CREATE_GAME:
+            return {
+                ...state,
+                createdGame: action.payload
+            }
         default:
             return {
                 ...state

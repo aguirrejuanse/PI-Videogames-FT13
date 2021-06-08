@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
-import { getGameById } from '../store/actions/gameActions';
+import { getGameById, clearDetail } from '../store/actions/gameActions';
 
-const Detail = ({ game, getGameById }) => {
+const Detail = ({ game, getGameById, clearDetail }) => {
     const { idGame } = useParams();
 
     function getGame(id){
@@ -15,6 +15,10 @@ const Detail = ({ game, getGameById }) => {
         getGame(idGame)
     },[]);
 
+    const handleClick = () => {
+        clearDetail()
+    }
+
     return (
         <>
             <h1>Soy detail</h1>
@@ -22,7 +26,7 @@ const Detail = ({ game, getGameById }) => {
             <>
                 <h2>{game.name}</h2>
                 <Link to="/home" >
-                    <h2>X</h2>
+                    <button onClick={handleClick} >X</button>
                 </Link>
                 {console.log("detail")}
             </>
@@ -39,7 +43,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        getGameById: game => { dispatch(getGameById(game)) }
+        getGameById: game => { dispatch(getGameById(game)) },
+        clearDetail: () => {dispatch(clearDetail()) }
     }
 };
 

@@ -6,7 +6,7 @@ import GameCard from './GameCard';
 const AllGames = ({ games, getAllGames }) => {
     useEffect(() => {
         getAllGames();
-    }, [games])
+    }, [])
     
     return (
         <>

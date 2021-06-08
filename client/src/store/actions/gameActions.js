@@ -1,9 +1,11 @@
 import axios from 'axios';
-import { BASE_URL, GAME_URL, GENRE_URL } from '../../constants.js';
+import { GAME_URL, GENRE_URL } from '../../constants.js';
 export const GET_ALL_GAMES = 'GET_GAMES';
 export const GET_GAME_BY_NAME = 'GET_GAME_BY_NAME';
 export const GET_GAME_BY_ID = 'GET_GAME_BY_ID';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
+export const CREATE_GAME = 'CREATE_GAME';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -41,12 +43,30 @@ export function getGameById(id) {
     }
 }
 
+export function clearDetail() {
+    return {
+        type: CLEAR_DETAIL
+    }
+}
+
 export function getAllGenres(){
     return function(dispatch){
         return axios.get(`${GENRE_URL}all`)
         .then((response) => {
             dispatch({
                 type: GET_ALL_GENRES,
+                payload: response.data
+            })
+        })
+    }
+}
+
+export function createGame(form) {
+    return function(dispatch){
+        return axios.post(GAME_URL, form)
+        .then((response) => {
+            dispatch({
+                type: CREATE_GAME,
                 payload: response.data
             })
         })

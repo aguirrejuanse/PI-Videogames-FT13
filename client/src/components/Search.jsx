@@ -13,8 +13,8 @@ const Search = ({ games, getGameByName}) => {
 
     return (
         <>
-            <h2>Soy Search</h2>
-            <form onSubmit={handleSubmit}>
+            <h2>Busca un videojuego</h2>
+            <form >
                 <input 
                     name='game'
                     type='text'
@@ -22,7 +22,7 @@ const Search = ({ games, getGameByName}) => {
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />
-                {/* <button onClick={(e) => setDescription(e.target.value)} > Buscar </button> */}
+                <button onClick={handleSubmit} > Buscar </button>
             </form>
             {games?
                 games.map(g => {
