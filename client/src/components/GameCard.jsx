@@ -5,9 +5,14 @@ import '../assets/components/GameCard.scss'
 const GameCard = ({ games }) => {
     return (
         <div className="card">
-            <img src={games.background_image} alt={`Imagen del videojuego ${games.name}`} className="card__image" />
+            {games.image?
+                <img src={games.image} alt={`Imagen del videojuego ${games.name}`} className="card__image" />
+                :
+                <img src={games.background_image} alt={`Imagen del videojuego ${games.name}`} className="card__image" />
+            }
             <div className="card__details" >
                 <h4 className="card__details--title" >{games.name}</h4>
+                <h5 className="card__details--title" >Rating: {games.rating}</h5>
                 {games.genres?
                     <ul>
                         {games.genres.map(g => (

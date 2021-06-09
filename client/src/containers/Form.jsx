@@ -7,6 +7,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
         name: '',
         description: '',
         released: '',
+        image: '',
         rating: 0,
         genres: [],
         platforms: [],
@@ -36,6 +37,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
             description: form.description,
             released: form.released,
             rating: form.rating,
+            image: form.image,
             genre: form.genres,
             platforms: form.platforms
         }
@@ -44,6 +46,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
             name: '',
             description: '',
             released: '',
+            image: '',
             rating: 0,
             genres: [],
             platforms: [],
@@ -107,6 +110,15 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                     onChange={handleInput} 
                     />
                     
+                </div>
+                <div>
+                    <input 
+                    type="url"
+                    name="image"
+                    placeholder="Imagen"
+                    value={form.image}
+                    onChange={handleInput} 
+                    />
                 </div>
                 <div>
                     <label>Elige un genero</label>

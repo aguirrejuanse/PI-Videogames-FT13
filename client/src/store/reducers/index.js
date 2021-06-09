@@ -1,4 +1,4 @@
-import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL } from '../actions/gameActions.js';
+import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES } from '../actions/gameActions.js';
 
 const initialState = {
     allGames: undefined,
@@ -6,6 +6,7 @@ const initialState = {
     idGame: undefined,
     allGenres: undefined,
     createdGame: undefined,
+    myGames: undefined,
 }
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +15,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 allGames: action.payload
+            }
+        case GET_MY_GAMES:
+            if(typeof action.payload === 'string') {
+                return {
+                    ...state
+                }
+            } else {
+                return {
+                    ...state,
+                    myGames: action.payload
+                }
             }
         case GET_GAME_BY_NAME:
             return {

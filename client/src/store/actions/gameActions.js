@@ -6,6 +6,7 @@ export const GET_GAME_BY_ID = 'GET_GAME_BY_ID';
 export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const CREATE_GAME = 'CREATE_GAME';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
+export const GET_MY_GAMES = 'GET_MY_GAMES';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -13,6 +14,18 @@ export function getAllGames() {
         .then((response) => {
             dispatch({
                 type: GET_ALL_GAMES,
+                payload: response.data
+            })
+        })
+    }
+}
+
+export function getMyGames() {
+    return function(dispatch) {
+        return axios.get(`${GAME_URL}myGames`)
+        .then((response) => {
+            dispatch({
+                type: GET_MY_GAMES,
                 payload: response.data
             })
         })

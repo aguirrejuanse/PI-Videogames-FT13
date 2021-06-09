@@ -9,6 +9,9 @@ router.get('/', videogamesCtr.getByName);
 // GET /videogames
 router.get('/all', videogamesCtr.getAllVideogames);
 
+// GET /
+router.get('/myGames', videogamesCtr.getMyGames);
+
 // GET /videogames/{idVideogame}
 router.get('/:id', videogamesCtr.getById);
 

@@ -26,6 +26,9 @@ module.exports = (sequelize) => {
     platforms: {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
+    },
+    image: {
+      type: DataTypes.TEXT
     }
   });
 };

@@ -22,6 +22,23 @@ class ModelCrud {
         }
     }
 
+    getMyGames = async (req, res, next) => {
+        try {
+            const myGames = await this.model.findAll({
+                include: [{
+                    model: Genre,
+                    as: 'genres',
+                    attributes: ['id', 'name']
+                }]
+            });
+            console.log(myGames.length);
+            if(myGames.length > 0) return res.send(myGames);
+            return res.send('No existen videojuegos en la BD');
+        } catch (error) {
+            console.log(next(error));
+        }
+    }
+
     getByName = async (req, res, next) => {
         let name = req.query.name;
         name = name.replace(/["']/g, "");
@@ -29,7 +46,7 @@ class ModelCrud {
         const myGame = await this.model.findAll({
             include: [{
                 model: Genre,
-                as: 'genre',
+                as: 'genres',
                 attributes: ['id', 'name']
             }],
             where: {
@@ -59,11 +76,11 @@ class ModelCrud {
         const id = req.params.id;
         console.log(id)
         if(id.length > 9){
-            console.log("entre");
+            console.log("entre a la BD");
             const game = await this.model.findByPk(id, {
                 include: [{
                     model: Genre,
-                    as: 'genre',
+                    as: 'genres',
                     attributes: ['id' , 'name']
                 }]
             })
@@ -72,15 +89,15 @@ class ModelCrud {
     } else {
         const apiGame = await axios.get(`${BASE_URL}games/${id}?key=${API_KEY}`);
         if(apiGame){
-            const game = {
-                name: apiGame.data.name,
-                description: apiGame.data.description,
-                released: apiGame.data.released,
-                rating: apiGame.data.rating,
-                platforms: apiGame.data.platforms,
-                genres: apiGame.data.genres
-            }
-            return res.send(game);
+            // const game = {
+            //     name: apiGame.data.name,
+            //     description: apiGame.data.description,
+            //     released: apiGame.data.released,
+            //     rating: apiGame.data.rating,
+            //     platforms: apiGame.data.platforms,
+            //     genres: apiGame.data.genres
+            // }
+            return res.send(apiGame.data);
         } else {
             return res.send('No se encontro esa videojuego en la API');
         }
@@ -89,7 +106,7 @@ class ModelCrud {
 
     post = async (req, res, next) => {
         try {
-            const {name, description, released, rating, platforms, genre} = req.body;
+            const {name, description, released, rating, platforms, genre, image} = req.body;
             console.log(name, description, released, rating, platforms, genre);
             let game = await this.model.create({
                 name,
@@ -97,6 +114,7 @@ class ModelCrud {
                 released,
                 rating,
                 platforms,
+                image,
                 id: uuidv4(),
             })
             genre.forEach( async (g) => {
