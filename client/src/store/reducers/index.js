@@ -108,6 +108,31 @@ const reducer = (state = initialState, action) => {
                                 ...state
                             }
                     }
+                //Primer switch
+                case 'searchGames':
+                    console.log("estoy en searchGames y state es ", action.state );
+                    //Segundo switch
+                    switch (action.payload) {
+                        case 'Ascendente':
+                            return {
+                                ...state,
+                                searchGames: sortAsc([...state.searchGames])
+                            }
+                        case 'Descendente':
+                            return {
+                                ...state,
+                                searchGames: sortDesc([...state.searchGames])
+                            }
+                        case 'Rating':
+                            return {
+                                ...state,
+                                searchGames: sortRating([...state.searchGames])
+                            }
+                        default:
+                            return {
+                                ...state
+                            }
+                    }
                 default:
                     return {
                         ...state
