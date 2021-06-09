@@ -1,4 +1,5 @@
-import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES } from '../actions/gameActions.js';
+import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE } from '../actions/gameActions.js';
+import { sortAsc, sortDesc, sortRating } from '../../order-functions/order-functions';
 
 const initialState = {
     allGames: undefined,
@@ -51,6 +52,66 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 createdGame: action.payload
+            }
+        case SORT_STATE:
+            // console.log("Payload ", action.payload);
+            // console.log("state es ", action.state);
+            // console.log(`verifico que existe `, state.hasOwnProperty(action.state));
+            switch (action.state) {
+                //Primer switch
+                case 'allGames':
+                    console.log("estoy en allGames y state es ", action.state );
+                    //Segundo switch
+                    switch (action.payload) {
+                        case 'Ascendente':
+                            return {
+                                ...state,
+                                allGames: sortAsc([...state.allGames])
+                            }
+                        case 'Descendente':
+                            return {
+                                ...state,
+                                allGames: sortDesc([...state.allGames])
+                            }
+                        case 'Rating':
+                            return {
+                                ...state,
+                                allGames: sortRating([...state.allGames])
+                            }
+                        default:
+                            return {
+                                ...state
+                            }
+                    }
+                //Primer switch
+                case 'myGames':
+                    console.log("estoy en myGames y state es ", action.state );
+                    //Segundo switch
+                    switch (action.payload) {
+                        case 'Ascendente':
+                            return {
+                                ...state,
+                                myGames: sortAsc([...state.myGames])
+                            }
+                        case 'Descendente':
+                            return {
+                                ...state,
+                                myGames: sortDesc([...state.myGames])
+                            }
+                        case 'Rating':
+                            return {
+                                ...state,
+                                myGames: sortRating([...state.myGames])
+                            }
+                        default:
+                            return {
+                                ...state
+                            }
+                    }
+                default:
+                    return {
+                        ...state
+                    }
             }
         default:
             return {

@@ -7,6 +7,7 @@ export const GET_ALL_GENRES = 'GET_ALL_GENRES';
 export const CREATE_GAME = 'CREATE_GAME';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const GET_MY_GAMES = 'GET_MY_GAMES';
+export const SORT_STATE = 'SORT_STATE';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -83,5 +84,13 @@ export function createGame(form) {
                 payload: response.data
             })
         })
+    }
+}
+
+export function sortState(payload, state){
+    return {
+        type: SORT_STATE,
+        payload,
+        state
     }
 }

@@ -18,12 +18,12 @@ const Home = ({ games, getAllGames, myGames, getMyGames }) => {
             <h2>Home</h2>
             <Search />
             {games !== undefined && (
-                <AllGames title="Mira estos videojuegos" games={games} /> 
+                <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} /> 
             )
             }
 
             {myGames !== undefined && (
-                <AllGames title="Tus videojuegos creados" games={myGames}/>
+                <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} />
             )
             }
         </>
