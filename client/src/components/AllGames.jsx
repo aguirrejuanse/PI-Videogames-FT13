@@ -1,18 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { sortState } from '../store/actions/gameActions';
 import { connect } from 'react-redux';
 import GameCard from './GameCard';
+import Pagination from './Pagination';
 
-const AllGames = ({ games, title, sortState, state }) => {
-
+const AllGames = ({ games, title, sortState, state, genres }) => {
     //ORDENAMIENTO////////////////////////////////////////////////
     const handleOrderSelect = (type, state) => {
         console.log(type);
         return sortState(type, state);
-        // if(type === 'Ascendente') return sortAsc(games);
-        // if(type === 'Descendente') return sortDesc(games);
-        // if(type === 'Rating') return sortRating(games);
     }
+
+    //FILTRADO ///////////////////////////////////////////////////
+    const handleFilterSelect = (type) => {
+        console.log(type);
+        //con este accedo pero no logro obtenerlo
+        let filtro = games.filter((game) => game.genres.forEach(g => {
+            console.log(g.name.includes(type))
+            if(g.name === type) return true;
+            return false;
+            }
+        ))
+        console.log(filtro);
+    }
+
+    //PAGINADO///////////////////////////////////////
+    const [currentPage, setCurrentPage] = useState(1);
+    const [gamesPerPage] = useState(6);
+
+    //Get current posts
+    const indexLast = currentPage * gamesPerPage;
+    const indexFirst = indexLast - gamesPerPage;
+    const currentPost = games.slice(indexFirst, indexLast);
+    
+    //Change page
+    const paginate = pageNumber => {setCurrentPage(pageNumber)}
+    //PAGINADO////////////////////////////////////////////  
 
     return (
         <>
@@ -24,23 +47,25 @@ const AllGames = ({ games, title, sortState, state }) => {
                             <select onChange={(e) => handleOrderSelect(e.target.value, state)} >
                                 <option value="Ascendente">Ascendente</option>
                                 <option value="Descendente">Descendente</option>
-                                <option value="Rating">Rating</option>
+                                <option value="Rating">Rating  ⬆</option>
+                                <option value="Rating Desc">Rating  ⬇ </option>
                             </select>
                         </label>
                         <label>
-                            <select>
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                            <select onChange={(e) => handleFilterSelect(e.target.value)} >
+                                {genres !== undefined && (
+                                    genres.map((g) => (
+                                        <option value={g.name} key={g.id} >{g.name}</option>
+                                    ))
+                                )
+                                }
                             </select>
                         </label>
-                        <button>
-                            
-                        </button>
                     </div>
-                    {games.map(g => {
+                    {currentPost.map(g => {
                         return <GameCard games={g} key={g.id}/>
                     })}
+                    <Pagination gamesPerPage={gamesPerPage} totalGames={games.length} paginate={paginate} />
                 </section>
                 :
                 <section>

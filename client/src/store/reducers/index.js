@@ -1,5 +1,5 @@
 import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE } from '../actions/gameActions.js';
-import { sortAsc, sortDesc, sortRating } from '../../order-functions/order-functions';
+import { sortAsc, sortDesc, sortRatingAsc, sortRatingDesc } from '../../order-functions/order-functions';
 
 const initialState = {
     allGames: undefined,
@@ -76,7 +76,12 @@ const reducer = (state = initialState, action) => {
                         case 'Rating':
                             return {
                                 ...state,
-                                allGames: sortRating([...state.allGames])
+                                allGames: sortRatingAsc([...state.allGames])
+                            }
+                        case 'Rating Desc':
+                            return {
+                                ...state,
+                                allGames: sortRatingDesc([...state.allGames])
                             }
                         default:
                             return {
@@ -101,7 +106,12 @@ const reducer = (state = initialState, action) => {
                         case 'Rating':
                             return {
                                 ...state,
-                                myGames: sortRating([...state.myGames])
+                                myGames: sortRatingAsc([...state.myGames])
+                            }
+                        case 'Rating Desc':
+                            return {
+                                ...state,
+                                myGames: sortRatingDesc([...state.myGames])
                             }
                         default:
                             return {
@@ -126,7 +136,12 @@ const reducer = (state = initialState, action) => {
                         case 'Rating':
                             return {
                                 ...state,
-                                searchGames: sortRating([...state.searchGames])
+                                searchGames: sortRatingAsc([...state.searchGames])
+                            }
+                        case 'Rating Desc':
+                            return {
+                                ...state,
+                                searchGames: sortRatingDesc([...state.searchGames])
                             }
                         default:
                             return {

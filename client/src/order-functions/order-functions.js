@@ -24,7 +24,7 @@ export function sortDesc(arr) {
     });
 };
 
-export function sortRating(arr) {
+export function sortRatingAsc(arr) {
     console.log(arr.map(e => e.rating));
     return arr.sort(function (a, b) {
         if (a.rating < b.rating) {
@@ -37,3 +37,15 @@ export function sortRating(arr) {
     });
 };
 
+export function sortRatingDesc(arr) {
+    console.log(arr.map(e => e.rating));
+    return arr.sort(function (a, b) {
+        if (a.rating > b.rating) {
+            return 1;
+        }
+        if (a.rating < b.rating) {
+            return -1;
+        }
+        return 0;    
+    });
+};

@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getGameByName } from '../store/actions/gameActions'
 import AllGames from './AllGames';
-import GameCard from './GameCard';
 
-const Search = ({ games, getGameByName}) => {
+const Search = ({ games, getGameByName, genres}) => {
     const [description, setDescription] = useState('');
     
     const handleSubmit = event => {
@@ -26,7 +25,7 @@ const Search = ({ games, getGameByName}) => {
                 <button onClick={handleSubmit} > Buscar </button>
             </form>
             {games !== undefined && (
-                <AllGames title="Estos son todos los videojuegos" games={games} state={"searchGames"} />
+                <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} />
             )}
             {/* {games?
                 games.map(g => {

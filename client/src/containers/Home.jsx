@@ -1,29 +1,30 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getAllGames, getMyGames } from '../store/actions/gameActions';
+import { getAllGames, getMyGames, getAllGenres } from '../store/actions/gameActions';
 import AllGames from '../components/AllGames';
 import Search from '../components/Search';
 
 
-const Home = ({ games, getAllGames, myGames, getMyGames }) => {
+const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres }) => {
 
     useEffect(() => {
         getAllGames();
         getMyGames();
+        getAllGenres()
     }, [])
     //siempre esta pidiendo a la api
 
     return (
         <>
             <h2>Home</h2>
-            <Search />
+            <Search genres={genres} />
             {games !== undefined && (
-                <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} /> 
+                <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} /> 
             )
             }
 
             {myGames !== undefined && (
-                <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} />
+                <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} genres={genres} />
             )
             }
         </>
@@ -32,13 +33,15 @@ const Home = ({ games, getAllGames, myGames, getMyGames }) => {
 
 const mapStateToProps = state => ({
     games: state.allGames,
-    myGames: state.myGames
+    myGames: state.myGames,
+    genres: state.allGenres
 })
 
 const mapDispatchToProps = dispatch => {
     return {
         getAllGames: game => { dispatch(getAllGames(game)) },
-        getMyGames: game => { dispatch(getMyGames(game))}
+        getMyGames: game => { dispatch(getMyGames(game))},
+        getAllGenres: genre => { dispatch(getAllGenres(genre))}
     }
 }
 
