@@ -29,7 +29,7 @@ const Search = ({ games, getGameByName, genres}) => {
                 </form>
             </div>
             {games !== undefined && (
-                <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} />
+                <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} callAgain={handleSubmit} />
             )}
             {/* {games?
                 games.map(g => {

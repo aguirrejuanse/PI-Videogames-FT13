@@ -5,7 +5,7 @@ import GameCard from './GameCard';
 import Pagination from './Pagination';
 import '../assets/components/AllGames.scss';
 
-const AllGames = ({ games, title, sortState, state, genres, filter }) => {
+const AllGames = ({ games, title, sortState, state, genres, filter, callAgain }) => {
     //ORDENAMIENTO////////////////////////////////////////////////
     const handleOrderSelect = (type, state) => {
         console.log(type);
@@ -35,6 +35,10 @@ const AllGames = ({ games, title, sortState, state, genres, filter }) => {
         filter(type, state);
     }
 
+    const handleCall = (event) => {
+        callAgain(event)
+    }
+
     //PAGINADO///////////////////////////////////////
     const [currentPage, setCurrentPage] = useState(1);
     const [gamesPerPage] = useState(4);
@@ -50,7 +54,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter }) => {
 
     return (
         <>
-            {games?
+            {games.length > 0 ?
                 <section className="allGames__container" >
                     <h3 className="allGames__title" >{title}</h3>
                     <div className="button__container">
@@ -80,8 +84,11 @@ const AllGames = ({ games, title, sortState, state, genres, filter }) => {
                 </section>
                 :
                 <section>
-                    <h3>{title}</h3>
-                    <h4>No se han encontrado juegos</h4>
+                    <h3 className="allGames__title" >{title}</h3>
+                    <div className="notFound__container" >
+                        <h4 className="notFound--title" >Ups, no se han encontrado videojuegos</h4>
+                        <button className="notFound--button" onClick={(event) => handleCall(event)} >Cargar todos los juegos</button>
+                    </div>
                 </section>
             }
         </>

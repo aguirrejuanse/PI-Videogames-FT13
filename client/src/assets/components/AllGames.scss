@@ -27,3 +27,26 @@
     height: 25px;
     font-family: 'Muli', sans-serif;
 }
+
+.notFound__container{
+    display: flex;
+    justify-content: center;
+}
+
+.notFound--title {
+    margin-right: 10px;
+}
+
+.notFound--button {
+    // background-color: rgba(255, 255, 255, .3);
+    // border: none;
+    // border-radius: 25px;
+    // color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    // height: 40px;
+    // letter-spacing: 1px;
+    margin: 10px 0;
+}

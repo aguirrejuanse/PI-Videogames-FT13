@@ -19,12 +19,12 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres })
             <h2>Home</h2>
             <Search genres={genres} />
             {games !== undefined && (
-                <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} /> 
+                <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} callAgain={getAllGames} /> 
             )
             }
 
             {myGames !== undefined && (
-                <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} genres={genres} />
+                <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} genres={genres} callAgain={getMyGames} />
             )
             }
         </>
