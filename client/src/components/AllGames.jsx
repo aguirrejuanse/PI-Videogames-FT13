@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { sortState } from '../store/actions/gameActions';
+import { sortState, filter } from '../store/actions/gameActions';
 import { connect } from 'react-redux';
 import GameCard from './GameCard';
 import Pagination from './Pagination';
+import '../assets/components/AllGames.scss';
 
-const AllGames = ({ games, title, sortState, state, genres }) => {
+const AllGames = ({ games, title, sortState, state, genres, filter }) => {
     //ORDENAMIENTO////////////////////////////////////////////////
     const handleOrderSelect = (type, state) => {
         console.log(type);
@@ -13,20 +14,30 @@ const AllGames = ({ games, title, sortState, state, genres }) => {
 
     //FILTRADO ///////////////////////////////////////////////////
     const handleFilterSelect = (type) => {
-        console.log(type);
-        //con este accedo pero no logro obtenerlo
-        let filtro = games.filter((game) => game.genres.forEach(g => {
-            console.log(g.name.includes(type))
-            if(g.name === type) return true;
-            return false;
-            }
-        ))
-        console.log(filtro);
+        // console.log(type);
+        // console.log("games ", games.length);
+        // let filtro = undefined;
+        // function filterBy(arr, field) {
+        //     let videogamesFiltered = [];
+        //     for(let i = 0; i < arr.length; i++) {
+        //         for (let j = 0; j < arr[i].genres.length; j++) {
+        //         if(arr[i].genres[j].name === field) {
+        //             videogamesFiltered.push(arr[i])
+        //         }
+        //         }
+        //     }
+        //     return filtro = videogamesFiltered;;
+        // }
+        // filterBy(games, type);
+        // console.log(filtro);
+        // games = filtro;
+        // console.log("games ", games.length);
+        filter(type, state);
     }
 
     //PAGINADO///////////////////////////////////////
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage] = useState(6);
+    const [gamesPerPage] = useState(4);
 
     //Get current posts
     const indexLast = currentPage * gamesPerPage;
@@ -40,11 +51,11 @@ const AllGames = ({ games, title, sortState, state, genres }) => {
     return (
         <>
             {games?
-                <section>
-                    <h3>{title}</h3>
-                    <div>
+                <section className="allGames__container" >
+                    <h3 className="allGames__title" >{title}</h3>
+                    <div className="button__container">
                         <label>
-                            <select onChange={(e) => handleOrderSelect(e.target.value, state)} >
+                            <select onChange={(e) => handleOrderSelect(e.target.value, state)} className="select" >
                                 <option value="Ascendente">Ascendente</option>
                                 <option value="Descendente">Descendente</option>
                                 <option value="Rating">Rating  ⬆</option>
@@ -52,7 +63,7 @@ const AllGames = ({ games, title, sortState, state, genres }) => {
                             </select>
                         </label>
                         <label>
-                            <select onChange={(e) => handleFilterSelect(e.target.value)} >
+                            <select onChange={(e) => handleFilterSelect(e.target.value)} className="select" >
                                 {genres !== undefined && (
                                     genres.map((g) => (
                                         <option value={g.name} key={g.id} >{g.name}</option>
@@ -79,7 +90,8 @@ const AllGames = ({ games, title, sortState, state, genres }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        sortState: (type, game) => { dispatch(sortState(type, game)) }
+        sortState: (type, game) => { dispatch(sortState(type, game)) },
+        filter: (type, state) => { dispatch(filter(type, state)) }
     }
 }
 

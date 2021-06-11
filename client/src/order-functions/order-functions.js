@@ -49,3 +49,15 @@ export function sortRatingDesc(arr) {
         return 0;    
     });
 };
+
+export function filterBy(arr, field) {
+    let videogamesFiltered = [];
+    for(let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].genres.length; j++) {
+        if(arr[i].genres[j].name === field) {
+            videogamesFiltered.push(arr[i])
+        }
+        }
+    }
+    return videogamesFiltered;;
+}

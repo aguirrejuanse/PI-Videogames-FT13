@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getGameByName } from '../store/actions/gameActions'
 import AllGames from './AllGames';
+import '../assets/containers/Search.scss';
 
 const Search = ({ games, getGameByName, genres}) => {
     const [description, setDescription] = useState('');
@@ -12,18 +13,21 @@ const Search = ({ games, getGameByName, genres}) => {
     }
 
     return (
-        <>
+        <section className="search-background" >
             <h2>Busca un videojuego</h2>
-            <form >
-                <input 
-                    name='game'
-                    type='text'
-                    placeholder='Busca un videojuego...'
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                />
-                <button onClick={handleSubmit} > Buscar </button>
-            </form>
+            <div >
+                <form className="search--container" >
+                    <input 
+                        name='game'
+                        type='text'
+                        placeholder='Busca un videojuego...'
+                        value={description}
+                        onChange={e => setDescription(e.target.value)}
+                        className="search--input"
+                    />
+                    <button onClick={handleSubmit} className="search--button" > Buscar </button>
+                </form>
+            </div>
             {games !== undefined && (
                 <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} />
             )}
@@ -36,7 +40,7 @@ const Search = ({ games, getGameByName, genres}) => {
                 <>
                 </>
             } */}
-        </>
+        </section>
     )
 }
 

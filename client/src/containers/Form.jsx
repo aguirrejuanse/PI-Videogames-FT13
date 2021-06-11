@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAllGenres, createGame } from '../store/actions/gameActions';
+import '../assets/containers/Form.scss'
 
 const Form = ({ genre, getAllGenres, createGame, history }) => {
     const [form, setValues] = useState({
@@ -65,97 +66,107 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
     },[]);
     
     return (
-        <>
-            <h1>Soy form</h1>
-            <form>
-                <div>
-                    
-                    <input 
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={form.name}
-                    onChange={handleInput} 
-                    />
-                    
-                </div>
-                <div>
-                    
-                    <input 
-                    type="text"
-                    name="description"
-                    placeholder="Description"
-                    value={form.description}
-                    onChange={handleInput} 
-                    />
-                    
-                </div>
-                <div>
-                    
-                    <input 
-                    type="date"
-                    name="released"
-                    placeholder="Released"
-                    value={form.released}
-                    onChange={handleInput} 
-                    />
-                </div>
-                <div>
-                            
-                    <input 
-                    type="number"
-                    name="rating"
-                    placeholder="Rating"
-                    value={form.rating}
-                    onChange={handleInput} 
-                    />
-                    
-                </div>
-                <div>
-                    <input 
-                    type="url"
-                    name="image"
-                    placeholder="Imagen"
-                    value={form.image}
-                    onChange={handleInput} 
-                    />
-                </div>
-                <div>
-                    <label>Elige un genero</label>
-                    {genre?
-                    genre.map((g) => (
+        <section className="form-background" >
+            <div className="form__container">
+                <h2>Crea tu videojuego</h2>
+                <form className="login__container--form" >
+                    <div>
+                        
+                        <input 
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value={form.name}
+                        onChange={handleInput}
+                        className="form--input"
+                        />
+                        
+                    </div>
+                    <div>
+                        
+                        <input 
+                        type="text"
+                        name="description"
+                        placeholder="Description"
+                        value={form.description}
+                        onChange={handleInput}
+                        className="form--input"
+                        />
+                        
+                    </div>
+                    <div>
+                        
+                        <input 
+                        type="date"
+                        name="released"
+                        placeholder="Released"
+                        value={form.released}
+                        onChange={handleInput}
+                        className="form--input"
+                        />
+                    </div>
+                    <div>
+                                
+                        <input 
+                        type="number"
+                        name="rating"
+                        placeholder="Rating"
+                        value={form.rating}
+                        onChange={handleInput}
+                        className="form--input"
+                        />
+                        
+                    </div>
+                    <div>
+                        <input 
+                        type="url"
+                        name="image"
+                        placeholder="Imagen"
+                        value={form.image}
+                        onChange={handleInput}
+                        className="form--input"
+                        />
+                    </div>
+                    <section className="form--container-list" >
                         <div>
-                            <h4>{g.name}</h4>
-                            <input 
-                            type="checkbox"
-                            name="genres"
-                            value={g.name}
-                            onChange={handleInput}
-                            />
+                            <h3 className="form--container-title" >Elige un genero</h3>
+                            {genre?
+                            genre.map((g) => (
+                                <div className="form--container-checkbox" key={g.id}>
+                                    <input 
+                                    type="checkbox"
+                                    name="genres"
+                                    value={g.name}
+                                    onChange={handleInput}
+                                    className="form--checkbox"
+                                    />
+                                    <h4>{g.name}</h4>
 
+                                </div>
+                            ))
+                            :
+                            <h2>Cargando generos</h2>
+                            }
                         </div>
-                    ))
-                    :
-                    <h2>Cargando generos</h2>
-                    }
-                </div>
-                <div>
-                    <label>Elige una plataforma</label>
-                    {platforms.map((p) => (
                         <div>
-                            <h4>{p}</h4>
-                            <input 
-                            type="checkbox"
-                            name="platforms"
-                            value={p}
-                            onChange={handleInput}
-                            />
+                            <h3  >Elige una plataforma</h3>
+                            {platforms.map((p) => (
+                                <div className="form--container-checkbox" key={p}>
+                                    <input 
+                                    type="checkbox"
+                                    name="platforms"
+                                    value={p}
+                                    onChange={handleInput}
+                                    />
+                                    <h4>{p}</h4>
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-                <button onClick={handleSubmit} >Crear</button>
-            </form>
-        </>
+                    </section>
+                    <button onClick={handleSubmit} className="button" >Crear</button>
+                </form>
+            </div>
+        </section>
     )
 }
 

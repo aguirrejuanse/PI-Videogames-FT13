@@ -1,0 +1,29 @@
+.allGames__container {
+    overflow: hidden;
+    margin: 5px;
+    padding-bottom: 10px;
+}
+
+.allGames__title {
+    // background: #8f57fd;
+    color: black;
+    font-size: 16px;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.button__container{
+    display: flex;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.select {
+    margin-right: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 25px;
+    font-family: 'Muli', sans-serif;
+}

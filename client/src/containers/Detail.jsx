@@ -5,7 +5,6 @@ import { useParams } from 'react-router';
 import { getGameById, clearDetail } from '../store/actions/gameActions';
 import '../assets/containers/Detail.scss'
 
-
 const Detail = ({ game, getGameById, clearDetail }) => {
     const { idGame } = useParams();
 
@@ -32,31 +31,36 @@ const Detail = ({ game, getGameById, clearDetail }) => {
 
     return (
         <>
-            
             {game?
             <div className="background">
                 <div className="container" >
                     {game.image?
-                        <div className="cropped" >
-                            <img src={game.image} alt={`Imagen del videojuego ${game.name}`}/>
+                        <div className="cropped" style={{backgroundImage: `url(${game.image})`}}  >
+                            {/* <img src={game.image} alt={`Imagen del videojuego ${game.name}`}/> */}
+                            <h2 className="card__details--title" >{game.name}</h2>
                         </div>
                         :
                         <div className="cropped" >
-                            <img src={game.background_image} alt={`Imagen del videojuego ${game.name}`} />
+                            {/* <img src={game.background_image} alt={`Imagen del videojuego ${game.name}`} /> */}
+                            <h2 className="card__details--title" >{game.name}</h2>
                         </div>
                     }
                     <div >
                         <div>
-                            <h2 >{game.name}</h2>
-                            <h3>Fecha de lanzamiento: {game.released}</h3>
-                            <h3>Rating: {game.rating}</h3>
-                            <Link to="/home" >
-                                <button onClick={handleClick} >X</button>
-                            </Link>
+                            <div className="card__details--title__container">
+                                {/* <h2 className="card__details--title" >{game.name}</h2> */}
+                                <Link to="/home" >
+                                    <button onClick={handleClick} >X</button>
+                                </Link>
+                            </div>
+                            <div className="card__details--subtitle__container">
+                                <h3 className="card__details--subtitle">Fecha de lanzamiento: {game.released}</h3>
+                                <h3 className="card__details--subtitle" >Rating: {game.rating}</h3>
+                            </div>
                         </div>
-                        <div>
+                        <div className="card__details--list__container" >
                             <div>
-                                <ul>
+                                <ul className="card__details--list">
                                     Generos:
                                     {game.genres?
                                     game.genres.map((g) => (
@@ -67,8 +71,8 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                                     }
                                 </ul>
                             </div>
-                            <div>
-                                <ul>
+                            <div >
+                                <ul className="card__details--list" >
                                     Plataformas:
                                     {game.id.length > 9 && 
                                         game.platforms.map((p) => (
@@ -86,7 +90,7 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                                 </ul>
                             </div>
                         </div>
-                        <p>{stripHtml(game.description)}</p>
+                        <p className="card_details--description">{stripHtml(game.description)}</p>
                     </div>
                 </div>
             </div>
