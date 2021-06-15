@@ -26,7 +26,7 @@ const Search = ({ games, getGameByName, genres}) => {
                         onChange={e => setDescription(e.target.value)}
                         className="search--input"
                     />
-                    <button onClick={handleSubmit} className="search--button" > Buscar </button>
+                    <button onClick={handleSubmit} className="search--button" >Buscar</button>
                 </form>
             </div>
         </section>
