@@ -1,22 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { getAllGames, getMyGames, getAllGenres } from '../store/actions/gameActions';
 import AllGames from '../components/AllGames';
 import Search from '../components/Search';
-
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres }) => {
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
         getAllGames();
         getMyGames();
         getAllGenres()
-    }, [])
-    //siempre esta pidiendo a la api
+    }, [count])
+
+    if(count <= 1) {
+        setTimeout(() => {
+            setCount(count + 1);
+            console.log(count);
+        }, 1000);
+    }
 
     return (
-        <>
-            <h2>Home</h2>
+        <div style={{background: '#151515'}}>
+            <Header />
             <Search genres={genres} />
             {games !== undefined && (
                 <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} callAgain={getAllGames} /> 
@@ -27,7 +35,8 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres })
                 <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} genres={genres} callAgain={getMyGames} />
             )
             }
-        </>
+            <Footer />
+        </div>
     )
 }
 

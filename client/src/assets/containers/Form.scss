@@ -1,5 +1,5 @@
 .form-background {
-    background-image: linear-gradient(#21c08b, #8f57fd);
+    background: #151515;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -10,10 +10,10 @@
 
 .form__container {
     background-color: rgba(255,255,255,0.1);
-    border: 2px solid white;
+    border: 2px solid #FFFFFF;
     border-radius: 40px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    color: white;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -27,7 +27,7 @@
 
 .form--input {
     background-color: rgba(255,255,255,0.1);
-    border: 2px solid white;
+    border: 2px solid #FFFFFF;
     border-radius: 25px;
     color: white;
     font-family: 'Muli', sans-serif;
@@ -45,7 +45,7 @@
 
 .form--container-title {
     font-size: 18px;
-    color: white;
+    color: #FFFFFF;
     font-family: 'Muli', sans-serif;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .form--checkbox {
-    color: white;
+    color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     // margin-top: 10px;

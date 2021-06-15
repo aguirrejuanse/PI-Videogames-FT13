@@ -1,4 +1,4 @@
-import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE, FILTER } from '../actions/gameActions.js';
+import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE, FILTER, FILTER_MY_GAMES } from '../actions/gameActions.js';
 import { sortAsc, sortDesc, sortRatingAsc, sortRatingDesc, filterBy } from '../../order-functions/order-functions';
 
 const initialState = {
@@ -71,6 +71,25 @@ const reducer = (state = initialState, action) => {
                         ...state,
                         searchGames: filterBy(state.searchGames, action.payload)
                     }
+                default:
+                    return {
+                        ...state
+                    }
+            }
+        case FILTER_MY_GAMES:
+            console.log(action.payload);
+            // console.log(action);
+            switch (action.payload) {
+                // case 'myGames':
+                //     return {
+                //         ...state,
+                //         searchGames: state.searchGames.filter(g => g.id.toString().length > 9)
+                //     }
+                // case 'apiGames':
+                //     return {
+                //         ...state,
+                //         searchGames: state.searchGames.filter(g => g.id.toString().length < 9)
+                //     }
                 default:
                     return {
                         ...state

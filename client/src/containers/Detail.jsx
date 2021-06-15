@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { getGameById, clearDetail } from '../store/actions/gameActions';
-import '../assets/containers/Detail.scss'
+import '../assets/containers/Detail.scss';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Detail = ({ game, getGameById, clearDetail }) => {
     const { idGame } = useParams();
@@ -31,24 +33,23 @@ const Detail = ({ game, getGameById, clearDetail }) => {
 
     return (
         <>
+            <Header />
             {game?
             <div className="background">
                 <div className="container" >
                     {game.image?
-                        <div className="cropped" style={{backgroundImage: `url(${game.image})`}}  >
-                            {/* <img src={game.image} alt={`Imagen del videojuego ${game.name}`}/> */}
-                            <h2 className="card__details--title" >{game.name}</h2>
+                        <div className="cropped" >
+                            <img src={game.image} alt={`Imagen del videojuego ${game.name}`} className="game__image" />
                         </div>
                         :
                         <div className="cropped" >
-                            {/* <img src={game.background_image} alt={`Imagen del videojuego ${game.name}`} /> */}
-                            <h2 className="card__details--title" >{game.name}</h2>
+                            <img src={game.background_image} alt={`Imagen del videojuego ${game.name}`} className="game__image" />
                         </div>
                     }
                     <div >
                         <div>
                             <div className="card__details--title__container">
-                                {/* <h2 className="card__details--title" >{game.name}</h2> */}
+                                <h2 className="card__details--title" >{game.name}</h2>
                                 <Link to="/home" >
                                     <button onClick={handleClick} >X</button>
                                 </Link>
@@ -74,19 +75,19 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                             <div >
                                 <ul className="card__details--list" >
                                     Plataformas:
-                                    {game.id.length > 9 && 
-                                        game.platforms.map((p) => (
-                                            <li key={p}>{p}</li>
-                                        ))
-                                    }
-                                    {game.id.length < 9 &&
+                                    {game.id.toString().length < 9 &&
                                         // game.platforms?
-                                        game.platforms.map((p) => (
+                                        game.platforms.map(p => (
                                             <li key={p.platform.id} >{p.platform.name}</li>
                                         ))
                                         // :
                                         // <li>No está asociado a un genero</li>
                                     }
+                                    {game.id.length > 9 && 
+                                        game.platforms.map((p) => (
+                                            <li key={p}>{p}</li>
+                                            ))
+                                        }
                                 </ul>
                             </div>
                         </div>
@@ -95,8 +96,13 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                 </div>
             </div>
                 :
-                <h2>Cargando</h2>
+                <div className="background" >
+                    <div className="container" >
+                        <h2 className="loading" >Cargando detalles</h2>
+                    </div>
+                </div>
             }
+            <Footer />
         </>
     )
 }

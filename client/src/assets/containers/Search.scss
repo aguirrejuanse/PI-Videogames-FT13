@@ -1,5 +1,7 @@
 .search-background {
-    background-image: linear-gradient(#21c08b, #8f57fd);
+    // background-image: linear-gradient(#7952b3, #343a40);
+    // background: #343a40;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -13,7 +15,7 @@
 
 .search--input {
     background-color: rgba(255,255,255,0.1);
-    border: 2px solid white;
+    border: 2px solid #FFFFFF;
     border-radius: 25px;
     color: white;
     font-family: 'Muli', sans-serif;
@@ -29,7 +31,7 @@
     background-color: rgba(255, 255, 255, .3);
     border: none;
     border-radius: 25px;
-    color: white;
+    color: #FFFFFF;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;

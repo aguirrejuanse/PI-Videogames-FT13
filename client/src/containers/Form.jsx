@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getAllGenres, createGame } from '../store/actions/gameActions';
 import '../assets/containers/Form.scss'
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const Form = ({ genre, getAllGenres, createGame, history }) => {
     const [form, setValues] = useState({
@@ -66,6 +68,8 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
     },[]);
     
     return (
+        <>
+        <Header />
         <section className="form-background" >
             <div className="form__container">
                 <h2>Crea tu videojuego</h2>
@@ -167,6 +171,8 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                 </form>
             </div>
         </section>
+        <Footer />
+        </>
     )
 }
 

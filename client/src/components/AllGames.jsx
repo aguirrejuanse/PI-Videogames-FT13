@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { sortState, filter } from '../store/actions/gameActions';
+import { sortState, filter, filterMyGames } from '../store/actions/gameActions';
 import { connect } from 'react-redux';
 import GameCard from './GameCard';
 import Pagination from './Pagination';
 import '../assets/components/AllGames.scss';
 
-const AllGames = ({ games, title, sortState, state, genres, filter, callAgain }) => {
+const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, filterMyGames }) => {
     //ORDENAMIENTO////////////////////////////////////////////////
     const handleOrderSelect = (type, state) => {
         console.log(type);
@@ -14,29 +14,16 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain })
 
     //FILTRADO ///////////////////////////////////////////////////
     const handleFilterSelect = (type) => {
-        // console.log(type);
-        // console.log("games ", games.length);
-        // let filtro = undefined;
-        // function filterBy(arr, field) {
-        //     let videogamesFiltered = [];
-        //     for(let i = 0; i < arr.length; i++) {
-        //         for (let j = 0; j < arr[i].genres.length; j++) {
-        //         if(arr[i].genres[j].name === field) {
-        //             videogamesFiltered.push(arr[i])
-        //         }
-        //         }
-        //     }
-        //     return filtro = videogamesFiltered;;
-        // }
-        // filterBy(games, type);
-        // console.log(filtro);
-        // games = filtro;
-        // console.log("games ", games.length);
         filter(type, state);
     }
 
     const handleCall = (event) => {
         callAgain(event)
+    }
+
+    const handleFilterMyGames = (type) => {
+        console.log(type);
+        filterMyGames(type, state)
     }
 
     //PAGINADO///////////////////////////////////////
@@ -76,6 +63,13 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain })
                                 }
                             </select>
                         </label>
+                        <label>
+                            <select onChange={(e) => handleFilterMyGames(e.target.value, state)} className="select" >
+                                <option value="allGames" >Todos los videojuegos</option>
+                                <option value="apiGames">API videojuegos</option>
+                                <option value="myGames" >Mis videojuegos</option>
+                            </select>
+                        </label>
                     </div>
                     {currentPost.map(g => {
                         return <GameCard games={g} key={g.id}/>
@@ -98,7 +92,8 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain })
 const mapDispatchToProps = dispatch => {
     return {
         sortState: (type, game) => { dispatch(sortState(type, game)) },
-        filter: (type, state) => { dispatch(filter(type, state)) }
+        filter: (type, state) => { dispatch(filter(type, state)) },
+        filterMyGames: (type) => {dispatch(filterMyGames(type))}
     }
 }
 

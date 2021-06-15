@@ -6,7 +6,7 @@
 
 .allGames__title {
     // background: #8f57fd;
-    color: black;
+    color: #FFFFFF;
     font-size: 16px;
     padding-left: 30px;
     width: 100%;
@@ -20,8 +20,8 @@
 
 .select {
     margin-right: 10px;
-    background-color: black;
-    color: white;
+    background-color: #7952b3;
+    color: #151515;
     border: none;
     border-radius: 25px;
     height: 25px;
@@ -35,12 +35,13 @@
 
 .notFound--title {
     margin-right: 10px;
+    color: #FFFFFF;
 }
 
 .notFound--button {
-    // background-color: rgba(255, 255, 255, .3);
-    // border: none;
-    // border-radius: 25px;
+    background-color: #ffc107;
+    border: none;
+    border-radius: 10px;
     // color: white;
     cursor: pointer;
     font-size: 16px;

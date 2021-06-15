@@ -9,6 +9,7 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const GET_MY_GAMES = 'GET_MY_GAMES';
 export const SORT_STATE = 'SORT_STATE';
 export const FILTER = 'FILTER';
+export const FILTER_MY_GAMES = 'FILTER_MY_GAMES';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -101,5 +102,14 @@ export function filter(payload, state){
         type: FILTER,
         payload,
         state,
+    }
+}
+
+export function filterMyGames(payload, state) {
+    console.log(payload, state);
+    return {
+        type: FILTER_MY_GAMES,
+        payload,
+        state
     }
 }

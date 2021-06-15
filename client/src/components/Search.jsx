@@ -13,6 +13,7 @@ const Search = ({ games, getGameByName, genres}) => {
     }
 
     return (
+        <>
         <section className="search-background" >
             <h2>Busca un videojuego</h2>
             <div >
@@ -28,19 +29,11 @@ const Search = ({ games, getGameByName, genres}) => {
                     <button onClick={handleSubmit} className="search--button" > Buscar </button>
                 </form>
             </div>
-            {games !== undefined && (
-                <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} callAgain={handleSubmit} />
-            )}
-            {/* {games?
-                games.map(g => {
-                    {console.log("search")}
-                    return <GameCard games={g} key={g.id}/>
-                }) 
-                :
-                <>
-                </>
-            } */}
         </section>
+        {games !== undefined && (
+            <AllGames title={`Estos son todos los videojuegos que incluyen ${description}`} games={games} state={"searchGames"} genres={genres} callAgain={handleSubmit} />
+        )}
+        </>
     )
 }
 
