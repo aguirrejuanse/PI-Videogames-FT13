@@ -2,6 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import ProviderMock from '../../__mocks__/providerMock';
 import Search from '../../components/Search';
+import AllGames from '../../components/AllGames';
 
 describe('<Search />', () => {
     let search = mount(
@@ -25,7 +26,14 @@ describe('<Search />', () => {
     it('Tiene un boton que dice "Buscar" ', () => {
         expect(search.find('button')).toHaveLength(1);
         expect(search.find('button').text()).toEqual('Buscar');
+    });
+
+    it('Renderiza el componente <AllGames />', () => {
+        expect(search.find('AllGames')).toHaveLength(0);
+        // search.update();
+        // expect(search.find('AllGames')).toHaveLength(1);
     })
+
 
 
 });

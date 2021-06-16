@@ -132,7 +132,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         />
                     </div>
                     <section className="form--container-list" >
-                        <div>
+                        <div id="container-checkbox">
                             <h3 className="form--container-title" >Elige un genero</h3>
                             {genre?
                             genre.map((g) => (
@@ -152,7 +152,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                             <h2>Cargando generos</h2>
                             }
                         </div>
-                        <div>
+                        <div id="container-checkbox">
                             <h3  >Elige una plataforma</h3>
                             {platforms.map((p) => (
                                 <div className="form--container-checkbox" key={p}>
