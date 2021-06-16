@@ -11,7 +11,7 @@ const Landing = () => {
             <Header/>
             <section className="inicio">
                 <h1>Individual Project - Henry Videogames</h1>
-                <img src={img} width="300px"/>
+                <img src={img} width="300px" alt="Imagen del PI-Videogames"/>
                 <div>
                     <p>
                         Este proyecto fue creado por Juan Aguirre para el proyecto individual.

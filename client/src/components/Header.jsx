@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <header className="header">
             
-            <img className="header__img" src={Logo} />
+            <img className="header__img" src={Logo} alt="Logo de Henry"/>
             
             <div>
                 <Link to="/home" style={{ textDecoration: 'none' }} >

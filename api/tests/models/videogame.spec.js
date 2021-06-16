@@ -26,7 +26,6 @@ describe('Videogame model', () => {
         Videogame.create({ name: game.name });
       });
     });
-  });
 
     describe('id', () => {
       it('lanza un error si id es null', (done) => {
@@ -38,7 +37,7 @@ describe('Videogame model', () => {
         Videogame.create({ id: game.id });
       });
     });
-
+  
     describe('description', () => {
       it('lanza un error si description es null', (done) => {
         Videogame.create({})
@@ -49,7 +48,7 @@ describe('Videogame model', () => {
         Videogame.create({ description: game.description });
       });
     });
-
+  
     describe('platforms', () => {
       it('lanza un error si platforms es null', (done) => {
         Videogame.create({})
@@ -60,6 +59,9 @@ describe('Videogame model', () => {
         Videogame.create({ platforms: game.platforms });
       });
     });
+
+  });
+
 
 });
 
@@ -83,12 +85,14 @@ describe('Genre model', () => {
         Genre.create({ name: 'Action' });
       });
     });
-  });
 
     describe('id', () => {
       it('crea el videojuego con un id válido', () => {
         Genre.create({ id: '2' });
       });
     });
+
+  });
+
 
 });

@@ -15,7 +15,7 @@ class ModelCrud {
         try {
             const apiGame = await axios.get(VIDEOGAMES_URL);
             const results = apiGame.data.results
-            console.log(results.length)
+            // console.log(results.length)
             res.send(results);
         } catch (error) {
             res.send(error);
@@ -31,7 +31,7 @@ class ModelCrud {
                     attributes: ['id', 'name']
                 }]
             });
-            console.log(myGames.length);
+            // console.log(myGames.length);
             if(myGames.length > 0) return res.send(myGames);
             return res.send('No existen videojuegos en la BD');
         } catch (error) {
