@@ -61,8 +61,8 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                         </div>
                         <div className="card__details--list__container" >
                             <div>
+                                <h3>Generos:</h3>
                                 <ul className="card__details--list">
-                                    Generos:
                                     {game.genres?
                                     game.genres.map((g) => (
                                         <li key={g.id} >{g.name}</li>
@@ -73,8 +73,8 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                                 </ul>
                             </div>
                             <div >
+                                <h3>Plataformas:</h3>
                                 <ul className="card__details--list" >
-                                    Plataformas:
                                     {game.id.toString().length < 9 &&
                                         // game.platforms?
                                         game.platforms.map(p => (

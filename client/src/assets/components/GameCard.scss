@@ -4,7 +4,7 @@
     position: relative;
     display: inline-block;
     width: 300px;
-    height: 225px;
+    height: 260px;
     margin: 0px 10px;
     font-size: 20px;
     cursor: pointer;
@@ -35,7 +35,7 @@
 
 .card__image{
     width: 300px;
-    height: 225px;
+    height: 260px;
 }
 
 .card__details--title {
@@ -51,4 +51,14 @@
     margin: 3px 0px;
     left: 0px;
     list-style:none;
+}
+
+.card__details--button {
+    padding: 10px;
+    background-color: #7952b3;
+    color: #151515;
+    border: none;
+    border-radius: 25px;
+    height: 35px;
+    font-family: 'Muli', sans-serif;
 }

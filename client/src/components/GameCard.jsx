@@ -24,7 +24,7 @@ const GameCard = ({ games }) => {
                     </ul>
                 }
                 <Link to={`/home/detail/${games.id}`} >
-                    <button>
+                    <button className="card__details--button" >
                         Ver detalles
                     </button>
                 </Link>
