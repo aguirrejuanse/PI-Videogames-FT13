@@ -1,0 +1,29 @@
+.landing {
+    background-color: #151515;
+    background-image: url('https://raw.githubusercontent.com/aguirrejuanse/PI-Videogames-FT13/main/videogame.png?token=APFEXOUCLU23NQDZXRFFT5TAZG2W2');
+    width: 100%;
+    height: 100%;
+    color: #FFFFFF;
+}
+
+.inicio {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 70vh;
+}
+
+.ver-button{
+    background-color: #FFC107;
+    border: 2px solid #FFC107;
+    border-radius: 25px;
+    color: black;
+    font-family: 'Muli', sans-serif;
+    font-size: 20px;
+    // height: 50px;
+    margin-bottom: 20px;
+    outline: none;
+    padding: 5px 20px;
+    width: 90%;
+}

@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './containers/Home';
 import Detail from './containers/Detail';
 import Form from './containers/Form';
+import Landing from './containers/Landing';
 
 
 
@@ -12,7 +13,7 @@ const App = () => (
     <Route exact path="/home/create" component={Form} />
     <Route exact path="/home/detail/:idGame" component={Detail} />
     <Route exact path="/home" component={Home}/>
-
+    <Route exact path="/" component={Landing} />
   </BrowserRouter>
 )
 
