@@ -21,8 +21,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
         callAgain(event)
     }
 
-    const handleFilterMyGames = (type) => {
-        console.log(type);
+    const handleFilterMyGames = (type, state) => {
         filterMyGames(type, state)
     }
 
@@ -63,13 +62,14 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
                                 }
                             </select>
                         </label>
-                        <label>
-                            <select onChange={(e) => handleFilterMyGames(e.target.value, state)} className="select" >
-                                <option value="allGames" >Todos los videojuegos</option>
-                                <option value="apiGames">API videojuegos</option>
-                                <option value="myGames" >Mis videojuegos</option>
-                            </select>
-                        </label>
+                        {state === 'searchGames' &&
+                            <label>
+                                <select onChange={(e) => handleFilterMyGames(e.target.value, state)} className="select" >
+                                    <option value="apiGames">API videojuegos</option>
+                                    <option value="myGames" >Mis videojuegos</option>
+                                </select>
+                            </label>
+                        }
                     </div>
                     {currentPost.map(g => {
                         return <GameCard games={g} key={g.id}/>
@@ -80,7 +80,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
                 <section>
                     <h3 className="allGames__title" >{title}</h3>
                     <div className="notFound__container" >
-                        <h4 className="notFound--title" >Ups, no se han encontrado videojuegos</h4>
+                        <h4 className="notFound--title" >Ups, no se han encontrado videojuegos con esos requerimientos</h4>
                         <button className="notFound--button" onClick={(event) => handleCall(event)} >Cargar todos los juegos</button>
                     </div>
                 </section>
@@ -93,7 +93,7 @@ const mapDispatchToProps = dispatch => {
     return {
         sortState: (type, game) => { dispatch(sortState(type, game)) },
         filter: (type, state) => { dispatch(filter(type, state)) },
-        filterMyGames: (type) => {dispatch(filterMyGames(type))}
+        filterMyGames: (type, state) => {dispatch(filterMyGames(type, state))}
     }
 }
 

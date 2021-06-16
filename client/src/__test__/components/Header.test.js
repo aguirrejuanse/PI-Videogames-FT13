@@ -16,7 +16,7 @@ describe('<Header />', () => {
     });
 
     it('Debe renderizar una imagen <img />', () => {
-        expect(header.find(".header__img").html()).toEqual('<img class=\"header__img\" src=\"[object Object]\">');
+        expect(header.find(".header__img").html()).toEqual('<img class=\"header__img\" src=\"[object Object]\" alt=\"Logo de Henry\">');
     });
 
     it('deberia renderizar dos componentes <Link>', () => {

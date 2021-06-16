@@ -106,7 +106,6 @@ export function filter(payload, state){
 }
 
 export function filterMyGames(payload, state) {
-    console.log(payload, state);
     return {
         type: FILTER_MY_GAMES,
         payload,

@@ -78,18 +78,18 @@ const reducer = (state = initialState, action) => {
             }
         case FILTER_MY_GAMES:
             console.log(action.payload);
-            // console.log(action);
+            console.log(action.state);
             switch (action.payload) {
-                // case 'myGames':
-                //     return {
-                //         ...state,
-                //         searchGames: state.searchGames.filter(g => g.id.toString().length > 9)
-                //     }
-                // case 'apiGames':
-                //     return {
-                //         ...state,
-                //         searchGames: state.searchGames.filter(g => g.id.toString().length < 9)
-                //     }
+                case 'myGames':
+                    return {
+                        ...state,
+                        searchGames: state.searchGames.filter(g => g.id.toString().length > 9)
+                    }
+                case 'apiGames':
+                    return {
+                        ...state,
+                        searchGames: state.searchGames.filter(g => g.id.toString().length < 9)
+                    }
                 default:
                     return {
                         ...state

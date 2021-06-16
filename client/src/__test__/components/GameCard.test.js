@@ -21,10 +21,11 @@ describe('<GameCard />', () => {
         expect(gameCard.find('.card')).toHaveLength(1);
     })
 
-    xit('Renderiza el nombre del juego en un h4 ', () => {
+    it('Renderiza el nombre del juego en un h4 ', () => {
         expect(gameCard.find('h4')).toHaveLength(1);
         const name = games[0].name;
-        expect(gameCard.find('h5').text()).toEqual(name);
+        // expect(gameCard.find('h4').text()).toEqual(name);
+        expect(gameCard.find('h4').html()).toEqual('<h4 class=\"card__details--title\"></h4>');
     });
 
     it('deberia renderizar un componentes <Link>', () => {

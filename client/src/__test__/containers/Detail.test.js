@@ -21,10 +21,11 @@ describe('<Detail />', () => {
         expect(detail.find('.container')).toHaveLength(1);
     })
 
-    xit('Renderiza el nombre del juego en un h4 ', () => {
-        expect(detail.find('h4')).toHaveLength(1);
-        const name = games[0].name;
-        expect(detail.find('h5').text()).toEqual(name);
+    it('Renderiza un h1 que diga "Cargando detalles" si game es undefined ', () => {
+        detail.update();
+        expect(detail.find('h1')).toHaveLength(1);
+        // const name = game[0].name;
+        expect(detail.find('h1').text()).toEqual('Cargando detalles');
     });
 
     it('<Link> deberia redirigir a "/home",' , () => {

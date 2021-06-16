@@ -98,7 +98,7 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                 :
                 <div className="background" >
                     <div className="container" >
-                        <h2 className="loading" >Cargando detalles</h2>
+                        <h1 className="loading" >Cargando detalles</h1>
                     </div>
                 </div>
             }
