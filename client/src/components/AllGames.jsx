@@ -27,7 +27,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
 
     //PAGINADO///////////////////////////////////////
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage] = useState(4);
+    const [gamesPerPage] = useState(16);
 
     //Get current posts
     const indexLast = currentPage * gamesPerPage;

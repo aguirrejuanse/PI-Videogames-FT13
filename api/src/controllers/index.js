@@ -13,9 +13,19 @@ class ModelCrud {
     //busca en la API
     getAllVideogames = async (req, res, next) => {
         try {
+            // const apiGame = await axios.get(`${VIDEOGAMES_URL}&page_size=100`);
+            // let results =apiGame.data.results;
+            // console.log("primer results ", results.length);
+            // let next = await axios.get(apiGame.data.next);
+            // console.log("primer next ", next.data.results.length);
+            // results += next.data.results;
+            // console.log("segundo results ", results.length);
+            // const response = results.slice(0, 99);
+            // console.log("response ", response.length);
+            // console.log("response que mando ", response.length)
+            // res.send(response);
             const apiGame = await axios.get(`${VIDEOGAMES_URL}&page_size=100`);
-            const results = apiGame.data.results
-            // console.log(results.length)
+            const results = apiGame.data.results;
             res.send(results);
         } catch (error) {
             res.send(error);

@@ -5,20 +5,17 @@
     display: inline-block;
     width: 300px;
     height: 260px;
+    // width: 140px;
+    // height: 140px;
     margin: 0px 10px;
     font-size: 20px;
     cursor: pointer;
-    // transition: 450ms all;
-    // -webkit-transform-origin: center left;
-    //         transform-origin: center left;
 }
 
 .card__details {
-    // align-items: flex-start;
     background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
     display: flex;
     flex-direction: column;
-    // justify-content: flex-end;
     height: 100%;
     padding: 10px;
     left: 0;
@@ -36,6 +33,8 @@
 .card__image{
     width: 300px;
     height: 260px;
+    // width: 140px;
+    // height: 140px;
 }
 
 .card__details--title {
