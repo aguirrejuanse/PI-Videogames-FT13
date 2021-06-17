@@ -8,7 +8,7 @@ import img from '../assets/videogame.png';
 const Landing = () => {
     return(
         <section className="landing">
-            <Header/>
+            <Header landing={"landing"}/>
             <section className="inicio">
                 <h1>Individual Project - Henry Videogames</h1>
                 <img src={img} width="300px" alt="Imagen del PI-Videogames"/>
