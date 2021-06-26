@@ -30,7 +30,6 @@ let game = {
 //   });
 
   describe('Ruta videojuegos', () => {
-
     before(() => conn.authenticate()
       .catch((err) => {
         console.error('Unable to connect to the database:', err);
@@ -45,10 +44,10 @@ let game = {
           .end((err, response) => {
             response.should.have.status(200);
             response.body.should.a('array');
-            response.body.length.should.equal(20);
+            response.body.length.should.equal(40);
             done();
           })
-      })
+      }).timeout(5000)
 
       it('/api/videogames/myGames deberia traer el videojuego creado', (done) => {
         chai.request(url)
@@ -59,7 +58,7 @@ let game = {
             response.body.length.should.equal(1);
             done();
           })
-      })
+      }).timeout(5000)
 
       it('/api/videogames/:id deberia traer un juego por ID', (done) => {
         chai.request(url)
@@ -72,7 +71,7 @@ let game = {
             response.body.should.have.property('name');
             done();
           })
-      })
+      }).timeout(5000)
 
       it('/api/videogames/?name="..." deberia traer un juego por nombre', (done) => {
         chai.request(url)
@@ -80,10 +79,10 @@ let game = {
           .end((err, response) => {
             response.should.have.status(200);
             response.body.should.a('array');
-            response.body.length.should.equal(20);
+            response.body.length.should.equal(40);
             done();
           })
-      })
+      }).timeout(5000)
     
     })
 

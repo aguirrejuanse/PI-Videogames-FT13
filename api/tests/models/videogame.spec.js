@@ -21,7 +21,7 @@ describe('Videogame model', () => {
         Videogame.create({})
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
-      });
+      }).timeout(5000);
       it('crea el videojuego con un nombre válido', () => {
         Videogame.create({ name: game.name });
       });
