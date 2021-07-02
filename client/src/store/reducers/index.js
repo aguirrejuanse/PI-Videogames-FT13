@@ -56,6 +56,7 @@ const reducer = (state = initialState, action) => {
             }
         case FILTER:
             console.log(action.state);
+            console.log(action)
             switch (action.state) {
                 case 'allGames':
                     return {
@@ -71,6 +72,11 @@ const reducer = (state = initialState, action) => {
                     return {
                         ...state,
                         searchGames: filterBy(state.searchGames, action.payload)
+                    }
+                case 'favorites':
+                    return {
+                        ...state,
+                        favorites: filterBy(state.favorites, action.payload)
                     }
                 default:
                     return {
@@ -191,6 +197,35 @@ const reducer = (state = initialState, action) => {
                                 ...state
                             }
                     }
+                case 'favorites':
+                console.log("estoy en favorites y state es ", action.state );
+                //Segundo switch
+                switch (action.payload) {
+                    case 'Ascendente':
+                        return {
+                            ...state,
+                            favorites: sortAsc([...state.favorites])
+                        }
+                    case 'Descendente':
+                        return {
+                            ...state,
+                            favorites: sortDesc([...state.favorites])
+                        }
+                    case 'Rating':
+                        return {
+                            ...state,
+                            favorites: sortRatingAsc([...state.favorites])
+                        }
+                    case 'Rating Desc':
+                        return {
+                            ...state,
+                            favorites: sortRatingDesc([...state.favorites])
+                        }
+                    default:
+                        return {
+                            ...state
+                        }
+                }
                 default:
                     return {
                         ...state
