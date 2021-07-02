@@ -1,4 +1,4 @@
-import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE, FILTER, FILTER_MY_GAMES, ADD_FAVORITE } from '../actions/gameActions.js';
+import { GET_ALL_GAMES, GET_GAME_BY_NAME, GET_GAME_BY_ID, GET_ALL_GENRES, CREATE_GAME, CLEAR_DETAIL, GET_MY_GAMES, SORT_STATE, FILTER, FILTER_MY_GAMES, ADD_FAVORITE, DELETE_FAVORITE } from '../actions/gameActions.js';
 import { sortAsc, sortDesc, sortRatingAsc, sortRatingDesc, filterBy } from '../../order-functions/order-functions';
 
 const initialState = {
@@ -197,10 +197,15 @@ const reducer = (state = initialState, action) => {
                     }
             }
         case ADD_FAVORITE:
-            console.log(action.payload)
+
             return {
                 ...state,
-                favorites: [...state.favorites, action.payload]
+                favorites: [...state.favorites.filter(game => game.id !== action.payload.id), action.payload]
+            }
+        case DELETE_FAVORITE:
+            return{
+                ...state,
+                favorites: state.favorites.filter(game => game.id !== action.payload)
             }
         default:
             return {

@@ -73,7 +73,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
                     </div>
                     <section className="carousel">
                         {currentPost.map(g => {
-                            return <GameCard games={g} key={g.id}/>
+                            return <GameCard games={g} key={g.id} state={state}/>
                         })}
                     </section>
                     <Pagination gamesPerPage={gamesPerPage} totalGames={games.length} paginate={paginate} />

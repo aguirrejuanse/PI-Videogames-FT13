@@ -11,6 +11,7 @@ export const SORT_STATE = 'SORT_STATE';
 export const FILTER = 'FILTER';
 export const FILTER_MY_GAMES = 'FILTER_MY_GAMES';
 export const ADD_FAVORITE = 'ADD_FAVORITE';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -117,6 +118,13 @@ export function filterMyGames(payload, state) {
 export function addFavorite(payload) {
     return {
         type: ADD_FAVORITE,
+        payload
+    }
+}
+
+export function deleteFavorite(payload){
+    return {
+        type: DELETE_FAVORITE,
         payload
     }
 }

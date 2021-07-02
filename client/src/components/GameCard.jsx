@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addFavorite } from '../store/actions/gameActions';
+import { addFavorite, deleteFavorite } from '../store/actions/gameActions';
 import '../assets/components/GameCard.scss'
 
-const GameCard = ({ games, addFavorite, state }) => {
+const GameCard = ({ games, addFavorite, deleteFavorite, state }) => {
     
-    const handleFavorite = game => {
+    const handleAddFavorite = game => {
         addFavorite(game);
+    }
+
+    const handleDeleteFavorite = id => {
+        deleteFavorite(id);
     }
     
     return (
@@ -35,11 +39,10 @@ const GameCard = ({ games, addFavorite, state }) => {
                         Ver detalles
                     </button>
                 </Link>
-                {console.log(state)}
                 {state === 'favorites' ?
-                    <button className="card__details--button-favorite" onClick={() => handleFavorite(games)}>Eliminar de favoritos</button>
+                    <button className="card__details--button-delete" onClick={() => handleDeleteFavorite(games.id)}>Eliminar de favoritos</button>
                     :
-                    <button className="card__details--button-favorite" onClick={() => handleFavorite(games)}>Añadir a favoritos</button>
+                    <button className="card__details--button-favorite" onClick={() => handleAddFavorite(games)}>Añadir a favoritos</button>
                 }
             </div>
         </div>
@@ -49,7 +52,8 @@ const GameCard = ({ games, addFavorite, state }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addFavorite: (game) => { dispatch(addFavorite(game)) }
+        addFavorite: (game) => { dispatch(addFavorite(game)) },
+        deleteFavorite: (id) => { dispatch(deleteFavorite(id)) }
     }
 }
 
