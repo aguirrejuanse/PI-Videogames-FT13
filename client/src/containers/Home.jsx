@@ -27,14 +27,15 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, f
         <div className="home">
             <Header />
             <Search genres={genres} />
-            {favorites.length > 0 ? 
-                <AllGames title="Favoritos" games={favorites} state='favorites' genres={genres} />  :
-                <></>
-            }
             
             {games !== undefined && (
                 <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} callAgain={getAllGames} /> 
-            )
+                )
+            }
+            
+            {favorites.length > 0 ? 
+                <AllGames title="Favoritos" games={favorites} state='favorites' genres={genres} />  :
+                <></>
             }
 
             {myGames !== undefined && (

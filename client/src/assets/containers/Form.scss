@@ -19,6 +19,11 @@
     padding: 60px 68px 40px;
 }
 
+.form__container--header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .login__container--form {
     display: flex;
     flex-direction: column;

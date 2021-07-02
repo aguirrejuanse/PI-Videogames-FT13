@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getAllGenres, createGame } from '../store/actions/gameActions';
 import '../assets/containers/Form.scss'
 import Header from '../components/Header';
@@ -72,7 +73,12 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
         <Header />
         <section className="form-background" >
             <div className="form__container">
-                <h2>Crea tu videojuego</h2>
+                <div className="form__container--header">
+                    <h2>Crea tu videojuego</h2>
+                    <Link to="/home">
+                        <button>X</button>
+                    </Link>
+                </div>
                 <form className="login__container--form" >
                     <div>
                         
@@ -110,7 +116,6 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         />
                     </div>
                     <div>
-                                
                         <input 
                         type="number"
                         name="rating"

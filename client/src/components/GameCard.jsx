@@ -13,6 +13,9 @@ const GameCard = ({ games, addFavorite, deleteFavorite, state }) => {
     const handleDeleteFavorite = id => {
         deleteFavorite(id);
     }
+
+    const genres = games.genres;
+    const threeGenres = genres.slice(0,3);
     
     return (
         <div className="card">
@@ -26,7 +29,7 @@ const GameCard = ({ games, addFavorite, deleteFavorite, state }) => {
                 <h5 className="card__details--title" >Rating: {games.rating}</h5>
                 {games.genres?
                     <ul>
-                        {games.genres.map(g => (
+                        {threeGenres.map(g => (
                             <li key={g.id} className="card__details--list" >{g.name}</li>
                         ))}
                     </ul> :

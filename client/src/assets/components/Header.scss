@@ -1,3 +1,42 @@
+@media (max-width: 366px) {
+    .header {
+        top: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .header__img {
+        display: none;
+    }
+
+    .header__home {
+        // margin-left: 0px;
+    }
+
+    .header__create{
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        top: 0px;
+        display: flex;
+        // flex-direction: column;
+        // margin-bottom: 20px;
+    }
+
+    .header__img {
+        display: none;
+    }
+
+    .header__home {
+        margin-left: 30px;
+    }
+}
+
+
 .header {
     align-items: center;
     background: #151515;
