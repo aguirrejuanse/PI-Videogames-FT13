@@ -54,11 +54,25 @@
 }
 
 .card__details--button {
-    padding: 10px;
+    // padding: 10px ;
     background-color: #7952b3;
     color: #151515;
     border: none;
-    border-radius: 25px;
-    height: 35px;
+    border-radius: 10px;
+    height: 25px;
+    width: 50%;
     font-family: 'Muli', sans-serif;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.card__details--button-favorite {
+    background-color: #FFC107;
+    color: #151515;
+    border: none;
+    border-radius: 10px;
+    height: 25px;
+    width: 50%;
+    font-family: 'Muli', sans-serif;
+    cursor: pointer;
 }

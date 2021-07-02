@@ -1,8 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addFavorite } from '../store/actions/gameActions';
 import '../assets/components/GameCard.scss'
 
-const GameCard = ({ games }) => {
+const GameCard = ({ games, addFavorite, state }) => {
+    
+    const handleFavorite = game => {
+        addFavorite(game);
+    }
+    
     return (
         <div className="card">
             {games.image?
@@ -28,9 +35,22 @@ const GameCard = ({ games }) => {
                         Ver detalles
                     </button>
                 </Link>
+                {console.log(state)}
+                {state === 'favorites' ?
+                    <button className="card__details--button-favorite" onClick={() => handleFavorite(games)}>Eliminar de favoritos</button>
+                    :
+                    <button className="card__details--button-favorite" onClick={() => handleFavorite(games)}>Añadir a favoritos</button>
+                }
             </div>
         </div>
     )
 }
 
-export default GameCard;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addFavorite: (game) => { dispatch(addFavorite(game)) }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(GameCard);

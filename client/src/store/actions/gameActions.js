@@ -10,6 +10,7 @@ export const GET_MY_GAMES = 'GET_MY_GAMES';
 export const SORT_STATE = 'SORT_STATE';
 export const FILTER = 'FILTER';
 export const FILTER_MY_GAMES = 'FILTER_MY_GAMES';
+export const ADD_FAVORITE = 'ADD_FAVORITE';
 
 export function getAllGames() {
     return function(dispatch) {
@@ -110,5 +111,12 @@ export function filterMyGames(payload, state) {
         type: FILTER_MY_GAMES,
         payload,
         state
+    }
+}
+
+export function addFavorite(payload) {
+    return {
+        type: ADD_FAVORITE,
+        payload
     }
 }

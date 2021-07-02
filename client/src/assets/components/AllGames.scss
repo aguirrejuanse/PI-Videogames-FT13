@@ -4,6 +4,15 @@
     padding-bottom: 10px;
 }
 
+// .allGames__container::-webkit-scrollbar {
+//     display: none;
+// }
+
+.carousel {
+    white-space: nowrap;
+    overflow: scroll;
+}
+
 .allGames__title {
     color: #FFFFFF;
     font-size: 16px;

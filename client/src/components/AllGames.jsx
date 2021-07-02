@@ -27,7 +27,7 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
 
     //PAGINADO///////////////////////////////////////
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage] = useState(4);
+    const [gamesPerPage] = useState(8);
 
     //Get current posts
     const indexLast = currentPage * gamesPerPage;
@@ -71,9 +71,11 @@ const AllGames = ({ games, title, sortState, state, genres, filter, callAgain, f
                             </label>
                         }
                     </div>
-                    {currentPost.map(g => {
-                        return <GameCard games={g} key={g.id}/>
-                    })}
+                    <section className="carousel">
+                        {currentPost.map(g => {
+                            return <GameCard games={g} key={g.id}/>
+                        })}
+                    </section>
                     <Pagination gamesPerPage={gamesPerPage} totalGames={games.length} paginate={paginate} />
                 </section>
                 :

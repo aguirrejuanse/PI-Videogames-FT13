@@ -5,8 +5,9 @@ import AllGames from '../components/AllGames';
 import Search from '../components/Search';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import '../assets/containers/Home.scss';
 
-const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres }) => {
+const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, favorites }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -23,9 +24,14 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres })
     }
 
     return (
-        <div style={{background: '#151515'}}>
+        <div className="home">
             <Header />
             <Search genres={genres} />
+            {favorites.length > 0 ? 
+                <AllGames title="Favoritos" games={favorites} state='favorites' genres={genres} />  :
+                <></>
+            }
+            
             {games !== undefined && (
                 <AllGames title="Mira estos videojuegos" games={games} state={"allGames"} genres={genres} callAgain={getAllGames} /> 
             )
@@ -43,7 +49,8 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres })
 const mapStateToProps = state => ({
     games: state.allGames,
     myGames: state.myGames,
-    genres: state.allGenres
+    genres: state.allGenres,
+    favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => {
