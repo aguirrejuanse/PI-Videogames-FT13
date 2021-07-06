@@ -21,9 +21,21 @@ Algunas funcionalidades del proyecto:
 - Botón para ver los detalles del videojuego 
 - Agregar videojuegos a la sección favoritos.
 
-<img heigth="600" width="800" src="./Landing.jpg" />
-<img heigth="600" width="800" src="./Home.jpg" />
-<img heigth="600" width="800" src="./Detail.jpg" />
+<h2 align="center" > Landing <h2/>
+<p align="center" >
+    <img heigth="600" width="800" src="./Landing.jpg" />
+<p />
+    
+<h2 align="center"> Home <h2/>
+<p align="center" >
+    <img heigth="600" width="800" src="./Home.jpg" />
+<p />
+    
+<h2 align="center"> Detail <h2/>
+<p align="center">  
+    <img heigth="600" width="800" src="./Detail.jpg" />
+<p />
+
 
 ## Objetivos del Proyecto
 
