@@ -21,6 +21,10 @@ Algunas funcionalidades del proyecto:
 - Botón para ver los detalles del videojuego 
 - Agregar videojuegos a la sección favoritos.
 
+<img heigth="200" width="200" src="./Landing.jpg" />
+<img heigth="200" width="200" src="./Home.jpg" />
+<img heigth="200" width="200" src="./Detail.jpg" />
+
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.
