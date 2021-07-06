@@ -2,11 +2,19 @@
     <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
 </p>
 
-# Individual Project - Henry Videogames
+# Videogames App
 
 <p align="right">
   <img height="200" src="./videogame.png" />
 </p>
+
+Videogames App es una SPA (Single Page Application) en la que se puede ver distintos videojuegos con su información utilizando la API [RAWG](https://rawg.io/).
+
+Utilicé React para el Front End y Redux como state management. Todos los componentes fueron desarrollados con Sass.
+La SPA consume los datos de RAWG a través de un Back End desarrollado en Node.JS
+utilizando Express, agregando nuevas funcionalidades a la API original.
+
+Algunas funcionalidades del proyecto: Input de búsqueda de videojuegos por nombre, ordenamientos y filtros, formulario controlado para crear un videojuego, botón para ver los detalles del videojuego y agregar videojuegos a la sección favoritos.
 
 ## Objetivos del Proyecto
 
