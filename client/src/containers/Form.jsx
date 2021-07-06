@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllGenres, createGame } from '../store/actions/gameActions';
 import '../assets/containers/Form.scss'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const Form = ({ genre, getAllGenres, createGame, history }) => {
     const [form, setValues] = useState({
@@ -70,7 +68,6 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
     
     return (
         <>
-        <Header />
         <section className="form-background" >
             <div className="form__container">
                 <div className="form__container--header">
@@ -176,7 +173,6 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                 </form>
             </div>
         </section>
-        <Footer />
         </>
     )
 }

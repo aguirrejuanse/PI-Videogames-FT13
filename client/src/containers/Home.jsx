@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { getAllGames, getMyGames, getAllGenres } from '../store/actions/gameActions';
 import AllGames from '../components/AllGames';
 import Search from '../components/Search';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import '../assets/containers/Home.scss';
 
 const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, favorites }) => {
@@ -25,7 +23,6 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, f
 
     return (
         <div className="home">
-            <Header />
             <Search genres={genres} />
             
             {games !== undefined && (
@@ -42,7 +39,6 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, f
                 <AllGames title="Tus videojuegos creados" games={myGames} state={"myGames"} genres={genres} callAgain={getMyGames} />
             )
             }
-            <Footer />
         </div>
     )
 }

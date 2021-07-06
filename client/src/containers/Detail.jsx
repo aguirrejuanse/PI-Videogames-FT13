@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { getGameById, clearDetail } from '../store/actions/gameActions';
 import '../assets/containers/Detail.scss';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 const Detail = ({ game, getGameById, clearDetail }) => {
     const { idGame } = useParams();
@@ -33,7 +31,6 @@ const Detail = ({ game, getGameById, clearDetail }) => {
 
     return (
         <>
-            <Header />
             {game?
             <div className="background">
                 <div className="container" >
@@ -102,7 +99,6 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                     </div>
                 </div>
             }
-            <Footer />
         </>
     )
 }
