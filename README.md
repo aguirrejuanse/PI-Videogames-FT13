@@ -15,11 +15,11 @@ La SPA consume los datos de [RAWG](https://rawg.io/) a través de un Back End de
 utilizando Express, agregando nuevas funcionalidades a la API original.
 
 Algunas funcionalidades del proyecto: 
--Input de búsqueda de videojuegos por nombre
--Ordenamientos y filtros
--Formulario controlado para crear un videojuego
--Botón para ver los detalles del videojuego 
--Agregar videojuegos a la sección favoritos.
+- Input de búsqueda de videojuegos por nombre
+- Ordenamientos y filtros
+- Formulario controlado para crear un videojuego
+- Botón para ver los detalles del videojuego 
+- Agregar videojuegos a la sección favoritos.
 
 ## Objetivos del Proyecto
 
