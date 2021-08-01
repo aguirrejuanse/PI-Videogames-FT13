@@ -79,7 +79,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                 </div>
                 <form className="login__container--form" >
                     <div>
-                        
+                        <label className="form--input-label" for="name">Name: </label>
                         <input 
                         type="text"
                         name="name"
@@ -91,7 +91,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
-                        
+                        <label className="form--input-label" for="Description">Description: </label>
                         <input 
                         type="text"
                         name="description"
@@ -103,7 +103,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
-                        
+                        <label className="form--input-label" for="Released">Released: </label>
                         <input 
                         type="date"
                         name="released"
@@ -114,6 +114,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         />
                     </div>
                     <div>
+                        <label className="form--input-label" for="Rating">Rating: </label>
                         <input 
                         type="number"
                         name="rating"
@@ -125,10 +126,11 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
+                        <label className="form--input-label" for="Image URL">Image URL: </label>
                         <input 
                         type="url"
                         name="image"
-                        placeholder="Imagen"
+                        placeholder="Image"
                         value={form.image}
                         onChange={handleInput}
                         className="form--input"
