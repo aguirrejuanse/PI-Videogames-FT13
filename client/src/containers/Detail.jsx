@@ -40,7 +40,7 @@ const Detail = ({ game, getGameById, clearDetail }) => {
                             <img src={game.image} alt={`Imagen del videojuego ${game.name}`} className="game__image" />
                         
                         :
-                        <div >
+                        <div className="container-image">
                             <img src={game.background_image} alt={`Imagen del videojuego ${game.name}`} className="game__image" />
                         </div>
                     }
