@@ -12,6 +12,7 @@ const Home = ({ games, getAllGames, myGames, getMyGames, genres, getAllGenres, f
         getAllGames();
         getMyGames();
         getAllGenres()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [count])
 
     if(count <= 1) {

@@ -64,6 +64,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
 
     useEffect(() => {
         getGenre()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
     
     return (

@@ -14,6 +14,7 @@ const Detail = ({ game, getGameById, clearDetail }) => {
 
     useEffect(() => {
         getGame(idGame)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const handleClick = () => {
