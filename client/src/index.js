@@ -9,8 +9,8 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config()
 
-
-axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001/api';
+// in integration add || 'http://localhost:3001/api'
+axios.defaults.baseURL = process.env.REACT_APP_API;
 
 ReactDOM.render(
   <React.StrictMode>
