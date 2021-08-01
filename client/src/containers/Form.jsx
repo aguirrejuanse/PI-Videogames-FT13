@@ -79,11 +79,11 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                 </div>
                 <form className="login__container--form" >
                     <div>
-                        <label className="form--input-label" for="name">Nombre: </label>
+                        <label className="form--input-label"  htmlFor="name">Nombre: </label>
                         <input 
                         type="text"
                         name="name"
-                        placeholder="nombre"
+                        placeholder="Nombre"
                         value={form.name}
                         onChange={handleInput}
                         className="form--input"
@@ -91,7 +91,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
-                        <label className="form--input-label" for="Descripción">Descripción: </label>
+                        <label className="form--input-label" htmlFor="Descripción">Descripción: </label>
                         <input 
                         type="text"
                         name="description"
@@ -103,7 +103,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
-                        <label className="form--input-label" for="Fecha de lanzamiento">Fecha de lanzamiento: </label>
+                        <label className="form--input-label" htmlFor="Fecha de lanzamiento">Fecha de lanzamiento: </label>
                         <input 
                         type="date"
                         name="released"
@@ -114,7 +114,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         />
                     </div>
                     <div>
-                        <label className="form--input-label" for="Rating">Rating: </label>
+                        <label className="form--input-label" htmlFor="Rating">Rating: </label>
                         <input 
                         type="number"
                         name="rating"
@@ -126,7 +126,7 @@ const Form = ({ genre, getAllGenres, createGame, history }) => {
                         
                     </div>
                     <div>
-                        <label className="form--input-label" for="Imagen URL">Imagen URL: </label>
+                        <label className="form--input-label" htmlFor="Imagen URL">Imagen URL: </label>
                         <input 
                         type="url"
                         name="image"
