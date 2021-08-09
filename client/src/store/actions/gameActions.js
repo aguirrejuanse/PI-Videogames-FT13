@@ -14,7 +14,7 @@ export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 
 export function getAllGames() {
     return function(dispatch) {
-        return axios.get(`/api/videogames/all`)
+        return axios.get(`/videogames/all`)
         .then((response) => {
             dispatch({
                 type: GET_ALL_GAMES,
@@ -26,7 +26,7 @@ export function getAllGames() {
 
 export function getMyGames() {
     return function(dispatch) {
-        return axios.get(`/api/videogames/myGames`)
+        return axios.get(`/videogames/myGames`)
         .then((response) => {
             dispatch({
                 type: GET_MY_GAMES,
@@ -38,7 +38,7 @@ export function getMyGames() {
 
 export function getGameByName(query) {
     return function(dispatch) {
-        return axios.get(`/api/videogames?name=${query}`)
+        return axios.get(`/videogames?name=${query}`)
         .then((response) => {
             dispatch({
                 type: GET_GAME_BY_NAME,
@@ -50,7 +50,7 @@ export function getGameByName(query) {
 
 export function getGameById(id) {
     return function(dispatch) {
-        return axios.get(`/api/videogames/${id}`)
+        return axios.get(`/videogames/${id}`)
         .then((response) => {
             dispatch({
                 type: GET_GAME_BY_ID,
@@ -68,7 +68,7 @@ export function clearDetail() {
 
 export function getAllGenres(){
     return function(dispatch){
-        return axios.get(`/api/genres/all`)
+        return axios.get(`/genres/all`)
         .then((response) => {
             dispatch({
                 type: GET_ALL_GENRES,
@@ -80,7 +80,7 @@ export function getAllGenres(){
 
 export function createGame(form) {
     return function(dispatch){
-        return axios.post('/api/videogames', form)
+        return axios.post('/videogames', form)
         .then((response) => {
             dispatch({
                 type: CREATE_GAME,
