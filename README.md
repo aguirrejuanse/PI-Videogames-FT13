@@ -21,6 +21,8 @@ Algunas funcionalidades del proyecto:
 - Botón para ver los detalles del videojuego 
 - Agregar videojuegos a la sección favoritos.
 
+[Link al deploy](http://142.93.57.240/)
+
 <h2 align="center" > Landing <h2/>
 <p align="center" >
     <img heigth="600" width="800" src="./Landing.jpg" />
