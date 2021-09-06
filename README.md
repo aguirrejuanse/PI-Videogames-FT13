@@ -45,7 +45,7 @@ Con esto, el proyecto debería estar corriendo en el puerto 3000. No es necesari
 
 **Tests**
 
-El proyecto cuenta con tests tanto en /src y en /client. Solamente hay que posicionarse en la carpeta e ingresar:
+El proyecto cuenta con tests tanto en /api y en /client. Solamente hay que posicionarse en la carpeta e ingresar:
 
 ```
 npm test
