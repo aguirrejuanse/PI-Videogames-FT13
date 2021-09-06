@@ -14,7 +14,7 @@ const Header = ({ landing }) => {
             {landing !== 'landing' &&
                 <div>
                     <Link to="/home" style={{ textDecoration: 'none' }} >
-                        <h2 className="header__home" >Home</h2>
+                        <h3 className="header__home" >Home</h3>
                     </Link>
                 </div>
             }
@@ -22,7 +22,7 @@ const Header = ({ landing }) => {
             {landing !== 'landing' &&
                 <div>
                     <Link to="/home/create" style={{ textDecoration: 'none' }} >
-                        <h2 className="header__create" >Crea un videojuego</h2>
+                        <h3 className="header__create" >Crea un videojuego</h3>
                     </Link>
                 </div>
             }
