@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import ProviderMock from '../../__mocks__/providerMock';
 import AllGames from '../../components/AllGames';
 import axios from 'axios';
-import { GAME_URL } from '../../constants'
+// import { GAME_URL } from '../../constants'
 import GameCard from '../../components/GameCard';
 import Pagination from '../../components/Pagination';
 
