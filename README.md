@@ -21,7 +21,36 @@ Algunas funcionalidades del proyecto:
 - Botón para ver los detalles del videojuego 
 - Agregar videojuegos a la sección favoritos.
 
-[Link al deploy](http://142.93.57.240/)
+## Levantar el proyecto 🚀
+
+Clonar el repositorio y posicionarse en la carpeta /client.
+
+Crear un archivo .env y agregar la siguiente variable:
+
+```
+REACT_APP_API=https://videogames--app.herokuapp.com/api
+```
+
+Luego ingresar:
+
+```
+npm install
+```
+
+```
+npm start
+```
+
+Con esto, el proyecto debería estar corriendo en el puerto 3000. No es necesario levantar el back ya que se encuentra deployado.
+
+**Tests**
+
+El proyecto cuenta con tests tanto en /api y en /client. Solamente hay que posicionarse en la carpeta e ingresar:
+
+```
+npm test
+```
+
 
 <h2 align="center" > Landing <h2/>
 <p align="center" >
