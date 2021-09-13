@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Snapshot Comprobar UI 1`] = `
+<footer
+  className="footer"
+>
+  <a
+    href="https://www.linkedin.com/in/juanseaguirre/"
+    rel="noreferrer"
+    target="_blank"
+  >
+    Creado por Juan Aguirre
+  </a>
+</footer>
+`;
